@@ -1,0 +1,38 @@
+﻿@model DIS_Group10.Models.Park
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="text-danger">@ViewData["ErrorMessage"]</p>
+        </div>
+
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-sm-3"><b>Park Name</b></div>
+                            <div class="col-sm-9">@Html.DisplayFor(model => model.fullName)</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3"><b>State</b></div>
+                            <div class="col-sm-9">
+                                @foreach (var item in Model.states)
+                                {
+                                     @Html.DisplayFor(modelItem => item.state.name)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form method="post" asp-controller="Home" asp-action="Delete">
+                <input type="hidden" asp-for="ID" />
+                <div class="col text-center">
+                    <button class="btn btn-danger" type="submit" name="action"><b>Click me to delete the park</b></button>
+
+                </div>
+            </form>
+
+        </div>
+</div>
